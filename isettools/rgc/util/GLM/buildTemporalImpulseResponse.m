@@ -34,6 +34,8 @@ function [k, timeAxis] = buildTemporalImpulseResponse(samplingTime)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     obj.tCenter{rgbInd, 1} = multFactor * ...
         buildTemporalImpulseResponse(samplingTime);
 %}

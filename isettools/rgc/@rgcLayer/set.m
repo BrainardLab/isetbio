@@ -48,6 +48,8 @@ function obj = set(obj, param, val, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     rgc1 = rgcSet(rgc1, 'name', 'macaque RGC')
     rgc1 = rgcSet(rgc1, 'temporalEquivEcc', 5)
 %}

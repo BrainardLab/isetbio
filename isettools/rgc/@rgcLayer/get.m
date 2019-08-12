@@ -46,6 +46,8 @@ function val = get(obj, param, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     val = rgcGet(rgc1, 'name')
     val = rgcGet(rgc1, 'input')
 %}

@@ -32,7 +32,8 @@ function hdl = plot(obj, pType, varargin)
 
 %% Examples:
 %{
-   % ETTBSkip - Example is broken. Remove this line when fixed.
+    % Skipping uninstantiated example.
+    % ETTBSkip
    s_initRetina;
    bpMosaic = bpL.mosaic{1};
    bpMosaic.plot('spatial rf')

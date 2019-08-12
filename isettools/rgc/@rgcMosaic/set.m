@@ -55,6 +55,8 @@ function obj = set(obj, param, val, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     rgc1.mosaic{1} = mosaicSet(rgc1.mosaic{1}, 'cellType', 'onParasol')
     rgc1.mosaic{1} = mosaicSet(rgc1.mosaic{1}, ...
         'linearResponse', linearResponse)

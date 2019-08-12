@@ -70,6 +70,8 @@ function [uData, hf] = plot(obj, plotType, varargin)
 
 %  Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     coneMosaic.plot('impulse response')
     coneMosaic.plot('cone mosaic')
 %}

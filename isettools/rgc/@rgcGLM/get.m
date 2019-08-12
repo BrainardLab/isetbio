@@ -44,6 +44,8 @@ function val = get(obj, param, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     val = mosaicGet(rgc1.mosaic{1}, 'cell type')
     val = mosaicGet(rgc1.mosaic{3}, 'psth response')
 %}

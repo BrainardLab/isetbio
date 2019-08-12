@@ -79,6 +79,8 @@ function val = get(obj, param, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     val = @rgcMosaic.get('cellType')
     val = @rgcMosaic.get('linearResponse')
 %}

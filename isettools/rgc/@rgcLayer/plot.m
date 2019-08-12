@@ -35,6 +35,8 @@ function [hdl, uData] = plot(obj, pType, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     rgcLayer.plot('mosaic', 'nMosaic', 1);
     rgcLayer.plot('psth', 'nMosaic', 2);
     rgcLayer.plot('psth', 'nMosaic', 2, 'cell', [1 1]);

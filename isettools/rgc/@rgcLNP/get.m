@@ -43,6 +43,8 @@ function val = get(obj, param, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     val = @rgcLNP.get('cell type')
     val = @rgcLNP.get('psth response')
 %}

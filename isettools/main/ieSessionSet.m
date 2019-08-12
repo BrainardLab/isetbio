@@ -72,6 +72,8 @@ function ieSessionSet(param, val, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     ieSessionSet('addrender', newAlg);
     ieSessionSet('main window', hObject, eventdata, handles);
 %}

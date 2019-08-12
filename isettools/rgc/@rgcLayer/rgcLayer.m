@@ -62,6 +62,8 @@ classdef rgcLayer < cellLayer
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     bpL = bipolarLayer(coneMosaic);
     rgcL = rgcLayer(bpLayer, 'name', 'myRGC');
 

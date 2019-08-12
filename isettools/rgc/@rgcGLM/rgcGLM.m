@@ -36,6 +36,8 @@ classdef rgcGLM < rgcMosaic
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
     ir.mosaicCreate('model', 'GLM', 'type', 'on midget');
 %}
 

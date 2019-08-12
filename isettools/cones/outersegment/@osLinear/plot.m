@@ -35,8 +35,8 @@ function [uData, h] = plot(os, pType, varargin)
 
 % Examples:
 %{
-    % ETTBSkip. Even when you initialize the osL object, the functions do
-    % not work.
+    % Skipping uninstantiated example.
+    % ETTBSkip
     osL = osCreate;
     osL.plot(absorptions, 'type', 'isomerizations')
     osL.plot(absorptions, 'type', 'current')

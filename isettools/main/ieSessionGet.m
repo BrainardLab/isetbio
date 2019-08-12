@@ -105,12 +105,16 @@ function val = ieSessionGet(param, varargin)
 
 % Examples:
 %{
+    % Skipping uninstantiated example.
+    % ETTBSkip
+
     h = ieSessionGet('scene window handle')
     f = ieSessionGet('scene figure')
     guihandles(f)
 
     ieSessionGet('version')
-    d = ieSessionGet('fontsize'); ieFontChangeSize(sceneWindow, d);
+    d = ieSessionGet('fontsize');
+    ieFontChangeSize(sceneWindow, d);
 
     hobj = ieSessionGet('opticalimagefigure');
 %}
