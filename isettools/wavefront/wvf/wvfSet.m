@@ -148,7 +148,7 @@ switch parm
         
         %% The measured values
         % These are the values that describe the assumed measurement
-        % conditions for the zernicke coefficients.
+        % conditions for the Zernike coefficients.
         %
         % When we perform a calculation, we may adjust some of the
         % parameters (say the wavelength) and derive the prediction

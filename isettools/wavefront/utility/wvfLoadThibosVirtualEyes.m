@@ -1,17 +1,17 @@
 function [sample_mean, sample_cov, subject_coeffs] = ...
     wvfLoadThibosVirtualEyes(pupilDiameterMM)
-% Load Thibos mean and covariance of Zernicke coefficients for human data
+% Load Thibos mean and covariance of Zernike coefficients for human data
 %
 % Syntax:
 %   [sample_mean, sample_cov, subject_coeffs] = ...
 %     wvfLoadThibosVirtualEyes([pupilDiameterMM])
 %
 % Description:
-%    Load statistical summary of the Zernicke polynomial coeffcients
+%    Load statistical summary of the Zernike polynomial coeffcients
 %    measured in the human eye. These come out in OSA order, including the
 %    j = 0 (piston) term.
 %
-%    For each pupil size, there are different numbers of Zernicke
+%    For each pupil size, there are different numbers of Zernike
 %    polynomials. Presumably this is because as the pupil area gets bigger
 %    they felt they needed more basis terms?  Read the paper to understand.
 %

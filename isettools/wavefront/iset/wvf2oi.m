@@ -5,7 +5,7 @@ function oi = wvf2oi(wvf)
 %   oi = wvf2oi(wvf)
 %
 % Description:
-%    Use Zernicke polynomial data in the wvfP structure and create an
+%    Use Zernike polynomial data in the wvfP structure and create an
 %    ISETBIO optical image whose optics match the wavefront data structure.
 %
 %    Before calling this function, compute the PSF of the wvf structure.

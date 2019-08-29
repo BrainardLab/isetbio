@@ -47,7 +47,7 @@ wList = wvfGet(wvf0,'calc wave');
 %% Calculate the PSF, normalized to peak of 1
 
 % This function computes the PSF by first computing the pupil function.  In
-% the default wvf object, the Zernicke coefficients match diffraction.
+% the default wvf object, the Zernike coefficients match diffraction.
 wvf0 = wvfComputePSF(wvf0);
 
 % Make sure psf computed this way (with zcoeffs zeroed) matches

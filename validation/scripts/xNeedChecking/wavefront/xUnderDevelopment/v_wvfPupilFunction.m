@@ -4,7 +4,7 @@
 %
 % This is the the complex function over the surface of the pupil that
 % describes the wavefront aberration.  The function combines the
-% aberrations from the measured Zernicke Polynomial coefficients and the
+% aberrations from the measured Zernike Polynomial coefficients and the
 % amplitude imposed (later) by the Stiles Crawford Effect.
 % 
 % This script will explore each of the parts and their inter-relationship.

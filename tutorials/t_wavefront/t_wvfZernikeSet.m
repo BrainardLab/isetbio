@@ -1,11 +1,11 @@
-function t_wvfZernickeSet
-% Illustrate the effects of adjusting Zernicke coefficients on the PSF
+function t_wvfZernike
+% Illustrate the effects of adjusting Zernike coefficients on the PSF
 %
 % Syntax:
-%   t_wvfZernickeSet
+%   t_wvfZernikeSet
 %
 % Description:
-%    Illustrate the effects on the PSF of adjusting different Zernicke
+%    Illustrate the effects on the PSF of adjusting different Zernike
 %    polynomial coefficients.
 %
 %    We create an image of the slanted bar and pass it through the optics.

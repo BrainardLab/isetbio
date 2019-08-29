@@ -8,7 +8,7 @@ function t_wvfAstigmatism
 %    Compute the wavefront-based point-spread function for various
 %    astigmatism and blur levels.
 %
-%    This illustrates the effect of Zernicke coefficients 4 and 5.
+%    This illustrates the effect of Zernike coefficients 4 and 5.
 %
 % Inputs:
 %    None.

@@ -70,7 +70,7 @@ function [I, params] = imageVernier(params, varargin)
     imshow(img);
     p.bgColor = 0.2;
     img = imageVernier(p);
-    Imshow(img);
+    imshow(img);
     p.barLength = 16;
     img = imageVernier(p);
     imshow(img);
