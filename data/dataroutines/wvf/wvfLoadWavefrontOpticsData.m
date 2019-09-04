@@ -2,8 +2,7 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
 % Load wavefront data from literature for Zernike coeffs
 %
 % Syntax:
-%   [wvf, oi] = wvfLoadWavefrontOpticsData('jIndex', [0:14], ...
-%       'whichEye', 'left', 'eccentricity', 0, 'whichGroup', 'emmetropes');
+%   [wvf, oi] = wvfLoadWavefrontOpticsData([varargin]);
 %
 % Description:
 %    This function loads the wavefront data from literature, including
@@ -43,9 +42,9 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
 %       - Nasal side, 10-18 degrees eccentricity will be removed since they
 %         are affected by the optic disk.
 %
-%       [Note: Authors state "severe distortions outermost
-%       eccentricities (>35 degrees) are removed from analysis", but don't
-%       give a definition of what is considered severe]
+%    [Note: Authors state "severe distortions outermost eccentricities (>35
+%    degrees) are removed from analysis", but don't give a definition of
+%    what is considered severe]
 %
 %    Please note that there are examples included in the source code below.
 %    To access these examples, type 'edit wvfLoadWavefrontOpticsData.m'
@@ -76,7 +75,7 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
 %                           integer represents the horizontal eccentricity,
 %                           and the second the vertical eccentricity.
 %                           (Default is [0, 0]).
-%               HORIZONTAL: Integer between -40 and 40 (deg), steps of 1, 
+%               HORIZONTAL: Integer between -40 and 40 (deg), steps of 1,
 %                           indicating for which eccentricity to compute
 %                           the mean Zernike coefficients for on the
 %                           horizontal axis. For the right eye -40 =
@@ -90,9 +89,9 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
 %    'eccentricityUnits'  - Units in which eccentricity is specified
 %                           (default 'deg') Options include:
 %               'deg':        Degrees of visual angle.
-%    'whichGroup'         - String or scalar defining which subset of the
-%                           subjects to analyze (default 'emmetropes'). The
-%                           options include:
+%    'whichGroup'         - String/Scalar. A string or scalar defining
+%                           which subset of the subjects to analyze
+%                           (default 'emmetropes'). The options include:
 %               'emmetropes': Emmetropes
 %               'myopes': Myopes
 %               'singleRandomEmmetrope': Select a random observer from the
@@ -108,7 +107,7 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
 % References:
 %    Jaeken, B. & Artal, P. (2012) Optical Quality of
 %    Emmetropic and Myopic Eyes in the Periphery Measured with High-Angular
-%    Resolution. Investigative Ophthalmology & Visual Science, June 2012, 
+%    Resolution. Investigative Ophthalmology & Visual Science, June 2012,
 %    Vol. 53, No. 7. Link: https://www.ncbi.nlm.nih.gov/pubmed/22511633
 %
 %    Polans J, Jaeken, B., McNabb, R.P., Artal, P., Izatt, J.A. (2015)
@@ -140,14 +139,15 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
 %      14 'vertical_quadrafoil'
 %
 % See Also:
-%    coneDensityReadData
+%   coneDensityReadData
 %
 
 % History:
-%    04/06/18  ek (NYU) First version of function
-%    05/05/18  dhb      Cosmetic.
-%    09/26/18  jnm      Formatting. Add catch for single eccentricity
-%                       value, note that examples are BROKEN, added TODO.
+%    04/06/18  ek   (NYU) First version of function
+%    05/05/18  dhb  Cosmetic.
+%    09/26/18  jnm  Formatting. Add catch for single eccentricity
+%                   value, note that examples are BROKEN, added TODO.
+%    09/04/19  jnm  Documentation pass
 
 % Examples:
 %{
@@ -161,6 +161,12 @@ function [wvf, oi] = wvfLoadWavefrontOpticsData(varargin)
         'wvfZcoefsSource', 'Polans2015', 'jIndex', 3:14, ...
         'whichEye', 'right', 'eccentricity', [5, 5], ...
         'whichGroup', 1:10, 'relativeRefraction', true, 'verbose', true);
+%}
+%{
+    % ETTBSkip
+    % Old syntax example - only single eccentricity, skip this.
+    [wvf, oi] = wvfLoadWavefrontOpticsData('jIndex', [0:14], ...
+        'whichEye', 'left', 'eccentricity', 0, 'whichGroup', 'emmetropes');
 %}
 
 
@@ -255,10 +261,10 @@ switch (params.species)
                 totalEyes = length({'right'});
                 totalEccenHorz = length(horzEccen);
                 totalEccenVert = length(vertEccen);
-                
+
                 % Truncate coordinate headers
                 allData = allData(:, :, 3:end);
-                
+
                 % Permute so that data matrix goes from
                 %   OLD (subject x all coords x zernike) to
                 %   NEW (zernike, subject, horz coords x vert coords)
@@ -273,7 +279,7 @@ switch (params.species)
 
                 % Check requested eye, can only be right
                 assert(strcmp(params.whichEye, 'right'));
-                
+
                 % Get central refractive error of each subject if requested
                 if params.relativeRefraction
                     Z4idx = 2; % since zcoeffs are from Z3-Z20
@@ -285,7 +291,7 @@ switch (params.species)
                 % right eye
                 opticDisk.RE = ismember(horzEccen, -18:-10);
                 allData(:, :, opticDisk.RE, :) = NaN;
-                
+
             otherwise
                 error('Unsupported source specified');
         end
@@ -302,13 +308,14 @@ eyeIdx = strcmp(params.whichEye, {'right', 'left'});
 % [Note: JNM - Adding check if eccentricity is a single value]
 if length(params.eccentricity) < 2
     params.eccentricity = [params.eccentricity, 0];
-    warning('Only a single value for eccentricity supplied. Assuming vertical eccentricity is 0');
+    warning(['Only a single value for eccentricity supplied. ', ...
+        'Assuming vertical eccentricity is 0']);
 end
 
 % Horizontal followed by Vertical
 eccenIdx = [find(ismember(horzEccen, round(params.eccentricity(1)))), ...
                 find(ismember(vertEccen, round(params.eccentricity(2))))];
-    
+
 %% 3. Report requested eccentricities and retinal side
 switch params.whichEye
     case 'right' % -40:40 corresponds to nasal to temporal retina
@@ -339,7 +346,7 @@ switch params.whichEye
                 fprintf('foveal retina, eccen: %2.0f\n', ...
                     params.eccentricity(1))
             end
-            
+
             if inf
                 fprintf('inferior retina, eccen: %2.0f\n', ...
                     params.eccentricity(2))
@@ -351,7 +358,7 @@ switch params.whichEye
                     params.eccentricity(2))
             end
         end
-        
+
     case 'left' % -40:40 corresponds to temporal to nasal retina
         % Check eccentricities for optic disk
         if ismember(10:18, round(params.eccentricity(1)))
@@ -425,14 +432,14 @@ elseif strcmp(params.wvfZcoefsSource, 'Polans2015')
     currData = allData(theseZCoef, subjectIdx, eccenIdx(1), eccenIdx(2));
 end
 
-%% 5. Preallocate matrices for psf and otf. 
+%% 5. Preallocate matrices for psf and otf.
 otfSupportLength = 201;
 all_psf = zeros(otfSupportLength, otfSupportLength, length(subjectIdx));
 all_otf = zeros(otfSupportLength, otfSupportLength, length(subjectIdx));
 usedSubjectData = zeros(length(theseZCoef), length(subjectIdx));
 subjectWithoutData = zeros(length(subjectIdx), 1);
 
-%% 3. Get psf with zernike coefficients then convert to OTF 
+%% 3. Get psf with zernike coefficients then convert to OTF
 % for the requested coordinates (in degrees)
 for p = 1:length(subjectIdx)
     % Get subject data
@@ -458,7 +465,7 @@ for p = 1:length(subjectIdx)
     else
         % Create human diffraction limited PSF for 550nm light & 3mm pupil
         wvf = wvfCreate;
-        
+
         % Set pupil size to the one reported in both Jaeken and Artal
         % (2012) and Polans (2015) (i.e. 4 mm) and wavelength 550nm.
         wvf = wvfSet(wvf, 'measuredpupilsize', 4);
@@ -514,16 +521,17 @@ if (params.verbose)
         title(sprintf('OTF for horz eccen: %2.0f deg, vert: %2.0f deg', ...
             round(params.eccentricity(1)), params.eccentricity(2)))
         end
-%}        
+%}
     end
-    
+
 end
 
 %% If more than one subject requested, average across subjects in OTF space
 if length(subjectIdx) > 1
     % First check for subjects without data
     if any(subjectWithoutData)
-        fprintf('(%s): Excluding subject nr %02d because there is no data available \n', mfilename, find(subjectWithoutData))
+        fprintf(['(%s): Excluding subject nr %02d because there is ', ...
+            'no data available \n'], mfilename, find(subjectWithoutData))
     end
     all_otf = all_otf(:, :, ~subjectWithoutData);
 
@@ -542,7 +550,7 @@ if length(subjectIdx) > 1
     % Change name
     wvf.name = sprintf('Average Subject Imported WVF, %s', ...
         params.wvfZcoefsSource);
-    
+
     % Add mean zcoeffs to wavefront structure
     wvf.zcoeffs = mean(usedSubjectData(:, ~subjectWithoutData), 2);
 else % No averaging, just use single subject, add otf and change name
@@ -577,4 +585,4 @@ if (params.verbose)
 end
 %}
 
-return
+end
