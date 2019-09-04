@@ -57,6 +57,7 @@ function [res, wave, comment, partialName] = ieReadSpectra(fname, wave, ...
 %    11/29/17  jnm  Fix the if/else from one liner, adjust example, add see
 %                   also section.
 %    01/26/18  jnm  Formatting update to match the Wiki.
+%    08/08/19  JNM  Add in catch for partialName in case windows.
 
 % Examples:
 %{
@@ -87,6 +88,12 @@ if ~test || test == 7
                     mfilename, partialName);
         return;
     end
+end
+
+% Windows gets cranky without an extension, keep this until the try/catch
+% has been added below.
+if ispc && ~contains(partialName, '.mat')
+    partialName = sprintf('%s.mat', partialName);
 end
 
 % Load in spectral data We should probably trap this condition so that if

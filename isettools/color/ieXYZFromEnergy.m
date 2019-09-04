@@ -90,7 +90,11 @@ end
 
 % The spectra of the energy points are in the rows of xwData. We load the
 % XYZ color matching functions into the columns of S.
-S = ieReadSpectra('XYZ', wave);
+if ispc
+    S = ieReadSpectra('XYZ.mat', wave);
+else
+    S = ieReadSpectra('XYZ', wave);
+end
 if numel(wave) > 1
     dWave = wave(2) - wave(1);
 else
