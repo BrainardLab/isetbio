@@ -4,7 +4,7 @@
 %   [status result] = ghostscript(cmd)
 %
 % Attempts to locate a ghostscript executable, finally asking the user to
-% specify the directory ghostcript was installed into. The resulting path
+% specify the directory Ghostscript was installed into. The resulting path
 % is stored for future reference.
 % 
 % Once found, the executable is called with the input command string.
@@ -113,7 +113,7 @@ while 1
         % title
         uiwait(warndlg('Ghostscript not found. Please locate the program.'))
     end
-    base = uigetdir('/', 'Ghostcript not found. Please locate the program.');
+    base = uigetdir('/', 'Ghostscript not found. Please locate the program.');
     if isequal(base, 0)
         % User hit cancel or closed window
         break;

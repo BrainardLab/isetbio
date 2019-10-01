@@ -30,6 +30,7 @@ function sformatted = ieParamFormat(s)
 %	 12/05/17  dhb  Handle cell arrays.
 %    12/12/17  jnm  Formatting
 %    01/19/18  jnm  Formatting update to match Wiki.
+%    09/04/19  jnm  speed up shift to lowercase and removal of whitespace.
 
 % Examples:
 %{
@@ -50,8 +51,9 @@ end
 % Lower case
 if (ischar(s))
     % To lower and remove spaces
-    sformatted = lower(s);
-    sformatted = strrep(sformatted, ' ', '');
+%     sformatted = lower(s);
+%     sformatted = strrep(sformatted, ' ', '');
+    sformatted = lower(s(~isspace(s)));
 else
     if (iscell(s))
         sformatted = s;
